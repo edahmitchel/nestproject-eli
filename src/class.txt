@@ -1,0 +1,26 @@
+providers any class with the injectable interface
+repository comes in between the server and your database
+controllwwer gets the req from the client should not bee aware of business logic
+
+encaspulation is all about modelling an object with data and methods()
+repoitory layer helps your app interact with the persistence layer(database)
+
+
+dto - DATA TRANSFER object
+
+export class FragranceDTO {
+    constructor(  public discount: boolean,
+        public name: string,
+        public size: number,
+        public price: number,
+        stock:number
+        ){}
+}
+
+
+validation pipes to strip data that we do not want from the
+
+
+READ ON 
+ORM
+DATA MAPPERS

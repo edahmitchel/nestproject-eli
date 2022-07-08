@@ -1,4 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { FragranceDTO } from './dto/createFragrance.dto';
+import { Fragrance } from './fragrance.model';
 import { FragranceService } from './fragrance.service';
 
 
@@ -8,34 +10,26 @@ export class FragranceController {
 
   @Get("all")
   getAll() {
-    return this.fragranceService.getProducts
+    return this.fragranceService.getFragrance()
   }
-  @Get(':id')
-  getFragrance(@Param('id') fragId: string) {
-    return this.fragranceService.getSingleFragrance(fragId);
-  }
+  // @Get(':id')
+  // getFragrance(@Param('id') fragId: string) {
+  //   return this.fragranceService.getSingleFragrance(fragId);
+  // }
 
   @Post()
   addFragrance(
-    @Body('title') fragTitle: string,
-    @Body('description') fragDesc: string,
-    @Body('price') fragPrice: number,
-  ) {
-    const generatedId = this.fragranceService.insertFragrance(
-      fragTitle,
-      fragDesc,
-      fragPrice,
-    );
-    return { id: generatedId };
+    @Body() reqBody:FragranceDTO ,
+  ):Fragrance[] {
+    // return reqBody;
+    return this.fragranceService.store(reqBody)
   }
   @Patch(':id')
   updateFragrance(
-    @Param('id') fragId: string,
-    @Body('title') fragTitle: string,
-    @Body('description') fragDesc: string,
-    @Body('price') fragPrice: number,
+    @Body() reqBody:FragranceDTO,
+    @Param('id') id :string
   ) {
-    this.fragranceService.updateFragrance(fragId, fragTitle, fragDesc, fragPrice);
+    this.fragranceService.updateFragrance(id,reqBody);
     return null;
   }
 

@@ -1,36 +1,53 @@
 import { Injectable,NotFoundException } from '@nestjs/common';
+import { FragranceDTO } from './dto/createFragrance.dto';
 import { Fragrance } from './fragrance.model';
 
 
 @Injectable()
 export class FragranceService {
-    private fragrances:Fragrance[]=[]
-    insertFragrance(title: string, desc: string, price: number) {
-        const fragranceId = Math.random().toString();
-        const newFragrance = new Fragrance(fragranceId, title, desc, price);
-        this.fragrances.push(newFragrance);
-        return fragranceId;
-      }
+    private fragrances:Fragrance[]=[];
+
     
-      getProducts() {
+    store(fragrance:FragranceDTO) {
+const {size, price, discount,stock,name} = fragrance
+        const Id = Math.random().toString();
+        const newFragrance = new Fragrance(Id,name,size, price,stock, discount,);
+        this.fragrances.push(newFragrance);
+        return this.fragrances;
+      }
+    // store(fragrance:FragranceDTO){
+    //   this.fragrances.push(fragrance);
+    //   return fragrance;
+
+    // }
+      getFragrance() {
         return [...this.fragrances];
       }
     
       getSingleFragrance(fragranceId: string) {
         const fragrance = this.findFragrance(fragranceId)[0];
-        return { ...fragrance };}
+        return [...this.fragrances ];}
 
-        updateFragrance(fragranceId: string, title: string, desc: string, price: number) {
-            const [fragrance, index] = this.findFragrance(fragranceId);
+        updateFragrance( id:string,
+           frag:FragranceDTO) {
+            const {size, price, discount,stock,name} = frag
+ 
+            const [fragrance, index] = this.findFragrance(id);
             const updatedFragrance = { ...fragrance};
-            if (title) {
-              updatedFragrance.title = title;
+            if (discount) {
+              updatedFragrance.discount = discount;
             }
-            if (desc) {
-              updatedFragrance.description = desc;
+            if (stock) {
+              updatedFragrance.stock = stock;
             }
             if (price) {
               updatedFragrance.price = price;
+            }
+            if (size) {
+              updatedFragrance.size= size;
+            }
+            if (name) {
+              updatedFragrance.name = name;
             }
             this.fragrances[index] = updatedFragrance;
           }

@@ -46,6 +46,16 @@ export class OrdersService {
             }
             return [order, orderIndex];
           }
+          replaceOrder(orderId: string, title: string, desc: string, price: number)
+           {
+            const [order, index] = this.findOrder(orderId)
+           const replacedOrder = {...order}
+           replacedOrder.description=desc
+           replacedOrder.price=price
+           replacedOrder.title=title
+           this.orders[index] = replacedOrder
+
+          }
 
 
 }
