@@ -24,3 +24,114 @@ validation pipes to strip data that we do not want from the
 READ ON 
 ORM
 DATA MAPPERS
+
+
+structures 13th july 2022
+monolith architecture - scoping related things into a module
+onion architecture
+hexagonal architecture
+microservices
+
+
+status codes
+draw a database schema
+draw a database schema using draw.io
+refactor your existing project to use a monolith pattern
+
+
+my own studies
+- data model 
+Data Model gives us an idea that how the final system will look like after its complete implementation. It defines the data elements and the relationships between the data elements. Data Models are used to show how data is stored, connected, accessed and updated in the database management system.
+
+types of data Models
+1 Hierarchical Model
+
+
+ This model organises the data in the hierarchical tree structure. The hierarchy starts from the root which has root data and then it expands in the form of a tree adding child node to the parent node. This model easily represents some of the real-world relationships like food recipes, sitemap of a website etc
+
+--- Features of a Hierarchical Model
+
+-One-to-many relationship: The data here is organised in a tree-like structure where the one-to-many relationship is between the datatypes. Also, there can be only one path from parent to any node. Example: In the above example, if we want to go to the node sneakers we only have one path to reach there i.e through men's shoes node.
+
+-Parent-Child Relationship: Each child node has a parent node but a parent node can have more than one child node. Multiple parents are not allowed.
+
+-Deletion Problem: If a parent node is deleted then the child node is automatically deleted.
+
+-Pointers: Pointers are used to link the parent node with the child node and are used to navigate between the stored data. Example: In the above example the 'shoes' node points to the two other nodes 'women shoes' node and 'men's shoes' node.
+
+Disadvantages of Hierarchical Model
+--Complex relationships are not supported.
+--As it does not support more than one parent of the child node so if we have some complex relationship where a child node needs to have two parent node then that can't be represented using this model.
+--If a parent node is deleted then the child node is automatically deleted.
+
+Network Model
+
+This model is an extension of the hierarchical model. It was the most popular model before the relational model. This model is the same as the hierarchical model, the only difference is that a record can have more than one parent. It replaces the hierarchical tree with a graph.
+
+Features of a Network Model
+
+--Ability to Merge more Relationships: In this model, as there are more relationships so data is more related. This model has the ability to manage one-to-one relationships as well as many-to-many relationships.
+
+--Many paths: As there are more relationships so there can be more than one path to the same record. This makes data access fast and simple.
+--Circular Linked List: The operations on the network model are done with the help of the circular linked list. The current position is maintained with the help of a program and this position navigates through the records according to the relationship.
+
+Advantages of Network Model
+The data can be accessed faster as compared to the hierarchical model. This is because the data is more related in the network model and there can be more than one path to reach a particular node. So the data can be accessed in many ways.
+As there is a parent-child relationship so data integrity is present. Any change in parent record is reflected in the child record.
+
+Disadvantages of Network Model
+As more and more relationships need to be handled the system might get complex. So, a user must be having detailed knowledge of the model to work with the model.
+Any change like updation, deletion, insertion is very complex.
+
+
+Entity-Relationship Model
+Entity-Relationship Model or simply ER Model is a high-level data model diagram. In this model, we represent the real-world problem in the pictorial form to make it easy for the stakeholders to understand. It is also very easy for the developers to understand the system by just looking at the ER diagram. We use the ER diagram as a visual tool to represent an ER Model. ER diagram has the following three components:
+
+Entities: Entity is a real-world thing. It can be a person, place, or even a concept. Example: Teachers, Students, Course, Building, Department, etc are some of the entities of a School Management System.
+Attributes: An entity contains a real-world property called attribute. This is the characteristics of that attribute. Example: The entity teacher has the property like teacher id, salary, age, etc.
+Relationship: Relationship tells how two attributes are related. Example: Teacher works for a department
+
+Features of ER Model
+Graphical Representation for Better Understanding: It is very easy and simple to understand so it can be used by the developers to communicate with the stakeholders.
+ER Diagram: ER diagram is used as a visual tool for representing the model.
+Database Design: This model helps the database designers to build the database and is widely used in database design.
+
+Advantages of ER Model
+Simple: Conceptually ER Model is very easy to build. If we know the relationship between the attributes and the entities we can easily build the ER Diagram for the model.
+Effective Communication Tool: This model is used widely by the database designers for communicating their ideas.
+Easy Conversion to any Model: This model maps well to the relational model and can be easily converted relational model by converting the ER model to the table. This model can also be converted to any other model like network model, hierarchical model etc.
+
+Relational Model
+Object-Oriented Data Model
+Object-Relational Data Model
+Flat Data Model
+Semi-Structured Data Model
+Associative Data Model
+Context Data Model
+
+
+
+400 -- BAD REQUEST
+401 
+
+
+
+
+
+ENTITIES ARE MIGRATIONS
+WEAK AND STRONG ENTITIES
+he s
+pivot STRONG ENTITIES HAVE UNIQUE ideNTIIER(id)
+ READ ACCESSORS AND MUTATORS 
+
+
+ uml diagrams
+pr 
+
+migrations in database 
+database normalization
+solid principles especially s
+database relationship
+database transactions and subscribers
+
+port 80 and port 443

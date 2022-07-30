@@ -8,36 +8,37 @@ import { FragranceService } from './fragrance.service';
 export class FragranceController {
   constructor(private readonly fragranceService: FragranceService) { }
 
-  @Get("all")
-  getAll() {
-    return this.fragranceService.getFragrance()
+  @Get('all')
+  getAll():Promise<Fragrance[]> {
+   return this.fragranceService.findAll();
+  //   return this.fragranceService.getFragrance()
   }
-  // @Get(':id')
-  // getFragrance(@Param('id') fragId: string) {
-  //   return this.fragranceService.getSingleFragrance(fragId);
-  // }
+   @Get(':id')
+  getFragrance(@Param('id') fragId: string) {
+      return this.fragranceService.findOne(fragId);
+   }
 
   @Post()
   addFragrance(
     @Body() reqBody:FragranceDTO ,
-  ):Fragrance[] {
-    // return reqBody;
-    return this.fragranceService.store(reqBody)
-  }
-  @Patch(':id')
-  updateFragrance(
-    @Body() reqBody:FragranceDTO,
-    @Param('id') id :string
-  ) {
-    this.fragranceService.updateFragrance(id,reqBody);
-    return null;
-  }
+  ): Promise<Fragrance> {
+    return this.fragranceService.create(reqBody);
+  } 
+    }
+  // @Patch(':id')
+  // updateFragrance(
+  //   @Body() reqBody:FragranceDTO,
+  //   @Param('id') id :string
+  // ) {
+  //   this.fragranceService.updateFragrance(id,reqBody);
+  //   return null;
+  // }
 
-  @Delete(':id')
-  removeFragrance(@Param('id') fragId: string) {
-    this.fragranceService.deleteFragrance(fragId);
-    return null;
-  }
+  // @Delete(':id')
+  // removeFragrance(@Param('id') fragId: string) {
+  //   this.fragranceService.deleteFragrance(fragId);
+  //   return null;
+  // }
 
 
-}
+
