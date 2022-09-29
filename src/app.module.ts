@@ -14,11 +14,11 @@ import { ProductsModule } from './products/products.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 3306,
+      host: 'containers-us-west-40.railway.app',
+      port: 7482,
       username: 'root',
-      password: '',
-      database: 'test',
+      password: 'icmpfLZb2pUNgJvMfa5B',
+      database: 'railway',
       autoLoadEntities:true,
       // entities: [Fragrance],
       synchronize: true,
