@@ -7,6 +7,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Fragrance } from './fragrance/fragrance.entity';
 import { DataSource } from 'typeorm';
 
+import { ProductsModule } from './products/products.module';
+
 
 @Module({
   imports: [
@@ -16,11 +18,11 @@ import { DataSource } from 'typeorm';
       port: 3306,
       username: 'root',
       password: '',
-      database: 'mydatabase',
+      database: 'test',
       autoLoadEntities:true,
       // entities: [Fragrance],
       synchronize: true,
-    }),FragranceModule, OrdersModule],
+    }),FragranceModule, OrdersModule, ProductsModule],
   controllers: [AppController],
   providers: [AppService],
 })
